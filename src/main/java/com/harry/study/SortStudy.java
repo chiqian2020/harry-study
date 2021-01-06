@@ -38,7 +38,7 @@ public class SortStudy {
     }
 
     /**
-     * 时间复杂度O(n*n)
+     * 选择排序 时间复杂度O(n*n)
      * @param array
      * @return
      */

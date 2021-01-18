@@ -18,4 +18,31 @@ public class AlgorithmStudyTest {
         System.out.println(md5.hashCode());
     }
 
+    @Test
+    public void maxLongPrefixTest() {
+        String[] array = {"lwe","fl","flqwe","flw"};
+        System.out.println(getMaxLongPrefix(array));
+    }
+
+    private String getMaxLongPrefix(String[] array) {
+        if (array == null || array.length == 0) {
+            return "";
+        }
+        String str = array[0];
+        String str2 = "";
+        int index = 1;
+        while(index < array.length){
+            for(int i=0; i < (str.length() < array[index].length()? str.length():array[index].length()); i++){
+                if(str.charAt(i) != array[index].charAt(i)){
+                    break;
+                }
+                str2 += str.charAt(i);
+            }
+            str = str2;
+            str2 = "";
+            index++;
+        }
+        return str;
+    }
+
 }

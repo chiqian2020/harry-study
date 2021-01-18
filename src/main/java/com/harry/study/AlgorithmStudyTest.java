@@ -20,7 +20,7 @@ public class AlgorithmStudyTest {
 
     @Test
     public void maxLongPrefixTest() {
-        String[] array = {"lwe","fl","flqwe","flw"};
+        String[] array = {"flwe","flw","flwwe","flw"};
         System.out.println(getMaxLongPrefix(array));
     }
 

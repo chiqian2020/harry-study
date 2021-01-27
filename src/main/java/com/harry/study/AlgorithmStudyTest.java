@@ -3,6 +3,9 @@ package com.harry.study;
 import org.apache.commons.codec.digest.Md5Crypt;
 import org.junit.jupiter.api.Test;
 
+import java.util.HashMap;
+import java.util.Map;
+
 /**
  *
  * 死磕算法
@@ -43,6 +46,23 @@ public class AlgorithmStudyTest {
             index++;
         }
         return str;
+    }
+
+    @Test
+    public void getMaxNotRepeatLength() {
+        String str = "jsagdfjsgfkjsafuwifsjhbcsjbc";
+        int length = str.length();
+        int left = 0,right = 0,max = 0;
+        Map<Character,Integer> map = new HashMap<>();
+        while (right < length) {
+            Character c = str.charAt(right);
+            if (map.containsKey(c)) {
+                left = Math.max(map.get(c)+1,left);
+            }
+            map.put(c,right++);
+            max = Math.max(max,right-left);
+        }
+        System.out.println(max);
     }
 
 }

@@ -254,8 +254,35 @@ public class AlgorithmStudyTest {
      * @param sum
      * @return
      */
-    public List<List<Integer>> pathSum(TreeNode root, int sum) {
-        return null;
+    public void pathSum(TreeNode root, int sum,List<List<Integer>> list,Stack<TreeNode> s) {
+        if (root != null) {
+            s.push(root);
+            if (root.left == null && root.right == null && sum == root.val) {
+                List<Integer> list1 = new ArrayList<>();
+                for (TreeNode t : s) {
+                    list1.add(t.val);
+                }
+                list.add(list1);
+            }
+            pathSum(root.left,sum-root.val,list,s);
+            pathSum(root.right,sum-root.val,list,s);
+            s.pop();
+        }
+    }
+
+    @Test
+    public void testPathSum() {
+
+        List<List<Integer>> list = new ArrayList<>();
+        Stack<TreeNode> s = new Stack<>();
+
+        TreeNode treeNode = new TreeNode(8);
+        treeNode.left = new TreeNode(3);
+        treeNode.right = new TreeNode(4);
+        treeNode.right.left = new TreeNode(1);
+        treeNode.left.left = new TreeNode(2);
+        pathSum(treeNode,13,list,s);
+        System.out.println(list);
     }
 
 }
